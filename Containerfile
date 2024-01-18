@@ -1,8 +1,7 @@
 FROM registry.opensuse.org/opensuse/distrobox:latest
 
 RUN sudo zypper refresh
-RUN sudo zypper install -y  \
-  neovim \
+RUN sudo zypper install -y neovim \
   bat \
   jq \
   zsh \
@@ -13,7 +12,12 @@ RUN sudo zypper install -y  \
   htop \
   psmisc \
   lazygit \
-  tmux
+  tmux \
+  lazygit \
+  gcc-c++ \
+  cmake \
+  gcc \
+  python3-virtualenv
 
 RUN sudo zypper ar https://download.opensuse.org/tumbleweed/repo/oss/ factory-oss
 RUN sudo zypper in -y eza
