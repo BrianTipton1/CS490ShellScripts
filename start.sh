@@ -22,6 +22,7 @@ cd ~/CS490ShellScripts
 mkdir -p ~/.cache/zsh
 mkdir -p ~/.config/zsh
 mkdir -p ~/work
+sudo mkdir -p /etc/containers/systemd
  
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.config/zsh/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.config/zsh/zsh-syntax-highlighting
@@ -32,14 +33,12 @@ cp ./.zshrc ~/.cache/zsh/.zshrc
 
 podman run quay.io/k9withabone/podlet podman run --name jupyter_notebook --detach -p 10000:8888 -v ~/work:/home/jovyan/work quay.io/jupyter/datascience-notebook:python-3.11 | sudo bash -c 'cat > /etc/containers/systemd/jupyter_notebook.container'
 sudo /usr/libexec/podman/quadlet /etc/systemd/system/
-
 sudo systemctl enable jupyter_notebook.service --now
 
 podman build -t mybase -f ./Containerfile .
 distrobox create main --image mybase
-(
-  distrobox enter main -- bash -c "yes '' | bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)" &&
-  rm -rf ~/.config/lvim &&
-  git clone https://github.com/BrianTipton1/lunarvim.git ~/.config/lvim &&
-  echo -e "if [ -z \"\${CONTAINER_ID}\" ]; then\n  exec distrobox enter main\nfi" >> ~/.bashrc
-) &
+
+distrobox enter main -- zsh -c "yes '' | bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/insta.sh)" 
+rm -rf ~/.config/lvim
+git clone https://github.com/BrianTipton1/lunarvim.gi~/.config/lvim 
+echo -e "if [ -z \"\${CONTAINER_ID}\" ]; then\n  exec distrobox enter main -- zsh\nfi" >> ~/.bashrc
