@@ -40,5 +40,5 @@ distrobox create main --image mybase
 
 distrobox enter main -- zsh -c "yes '' | bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)" 
 rm -rf ~/.config/lvim
-git clone https://github.com/BrianTipton1/lunarvim.gi ~/.config/lvim 
+git clone https://github.com/BrianTipton1/lunarvim.git ~/.config/lvim 
 echo -e "if [ -z \"\${CONTAINER_ID}\" ]; then\n  exec distrobox enter main -- zsh\nfi" >> ~/.bashrc
