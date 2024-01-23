@@ -75,7 +75,6 @@ ZSH_THEME="gallifrey"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  zsh-nvm
 	git
 	fzf
 	z
