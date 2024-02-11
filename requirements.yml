@@ -4,11 +4,11 @@ channels:
 - pytorch
 dependencies:
 - cpuonly
-- nb_conda
-- nb_conda_kernels
-- notebook
+- nb_conda::conda-forge
+- nb_conda_kernels::conda-forge
+- notebook::conda-forge
 - python=3.11
-- pytorch==2.1.2
-- torchaudio==2.1.2
-- torchvision==0.16.2
+- pytorch==2.1.2::pytorch
+- torchaudio==2.1.2::pytorch
+- torchvision==0.16.2::pytorch
 
